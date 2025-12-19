@@ -1,0 +1,18 @@
+{
+  "name": "cwb",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "prettier": "3.7.4",
+    "typescript": "^5.7.2"
+  }
+}
