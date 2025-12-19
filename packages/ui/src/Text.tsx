@@ -9,7 +9,10 @@ export function Text({ variant = "body", style, ...props }: TextProps) {
     <RNText
       style={[
         variant === "body" && { fontSize: 16 },
-        variant === "heading" && { fontSize: 24, fontWeight: "bold" },
+        variant === "heading" && {
+          fontSize: 32,
+          fontWeight: "bold",
+        },
         variant === "caption" && { fontSize: 12, color: "#666" },
         style,
       ]}

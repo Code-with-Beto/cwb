@@ -1,5 +1,5 @@
 {
-  "name": "cwb",
+  "name": "@cwb",
   "private": true,
   "workspaces": [
     "packages/*",
