@@ -1,4 +1,4 @@
-import { Text } from "@cwb/ui";
+import { Text } from "@code-with-beto/ui";
 import { View } from "react-native";
 
 export default function Index() {

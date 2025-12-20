@@ -2,6 +2,7 @@
   "name": "@code-with-beto/ui",
   "version": "0.0.1",
   "private": false,
+  "license": "PROPRIETARY",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
