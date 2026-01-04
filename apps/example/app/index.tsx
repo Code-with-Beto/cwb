@@ -1,5 +1,6 @@
 import { Text } from "@code-with-beto/ui";
-import { View } from "react-native";
+import { Link } from "expo-router";
+import { Pressable, View } from "react-native";
 
 export default function Index() {
   return (
@@ -11,6 +12,11 @@ export default function Index() {
       }}
     >
       <Text type="title">Hello World</Text>
+      <Link href="/text" asChild>
+        <Pressable>
+          <Text type="title">Text</Text>
+        </Pressable>
+      </Link>
     </View>
   );
 }
