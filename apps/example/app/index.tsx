@@ -10,7 +10,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text variant="heading">Hello World</Text>
+      <Text type="title">Hello World</Text>
     </View>
   );
 }
