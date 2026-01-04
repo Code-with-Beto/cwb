@@ -35,6 +35,7 @@ export default function TextScreen() {
           headerBlurEffect: !isLiquidGlassAvailable()
             ? headerBlurEffect
             : undefined,
+          headerLargeTitleEnabled: true,
           headerTransparent: Platform.select({ ios: true, android: false }),
         }}
       />
@@ -44,9 +45,12 @@ export default function TextScreen() {
           padding: 16,
         }}
       >
+        <Text type="subtitle" weight="bold" color="#0066CC">
+          Bold subtitle blue text
+        </Text>
         {textVariants.map((variant) => (
           <View key={variant} style={{ marginBottom: 16 }}>
-            <Text type="caption" style={{ marginBottom: 4, opacity: 0.6 }}>
+            <Text type="caption" style={{ marginBottom: 4 }} secondary>
               {`type="${variant}"`}
             </Text>
             <Text type={variant}>
