@@ -1,6 +1,8 @@
 # Code with Beto Labs 🧪🔬
 
-This repository contains packages and libraries that we built with love for the React Native community and [codewithbeto.dev](https://cwb.sh) members.
+This repository contains packages and libraries that we built with ❤️ for [Code with Beto](https://cwb.sh) members and React Native community.
+
+[Master React Native with us!](https://cwb.sh)
 
 ## Structure
 
