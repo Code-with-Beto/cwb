@@ -1,6 +1,15 @@
-# CWB Monorepo
+<div align="center">
 
-A pnpm workspace containing shared packages and example applications.
+# @code-with-beto/ui
+
+**Open-source React Native UI components by [Code with Beto](https://codewithbeto.dev)**
+
+[![YouTube](https://img.shields.io/badge/YouTube-30k%2B_subs-red?style=flat&logo=youtube)](https://cwb.sh/youtube)
+[![Discord](https://img.shields.io/badge/Discord-Join_Community-5865F2?style=flat&logo=discord&logoColor=white)](https://cwb.sh/discord)
+[![Newsletter](https://img.shields.io/badge/Newsletter-14k%2B_subscribers-orange?style=flat&logo=substack)](https://cwb.sh/newsletter)
+[![X](https://img.shields.io/badge/X-@betomoedano-000?style=flat&logo=x)](https://x.com/betomoedano)
+
+</div>
 
 ## Structure
 
@@ -70,6 +79,17 @@ This compiles TypeScript to JavaScript in the `dist/` folder, which is what gets
 ## Publishing
 
 For information on publishing packages, see the [UI package README](./packages/ui/README.md).
+
+## Learn React Native
+
+This library is built and maintained by [Code with Beto](https://codewithbeto.dev). If you want to go deeper into React Native, check out the [React Native course](https://cwb.sh/rn?r=cwb-repo) — it includes access to production-ready codebases like AI Tattoo, QuickCall AI, OAuth Starter, and more.
+
+### Stay connected
+
+- [YouTube](https://cwb.sh/youtube) — free tutorials every week
+- [X / Twitter](https://x.com/betomoedano)
+- [Discord](https://cwb.sh/discord) — hang out with other RN devs
+- [Newsletter](https://cwb.sh/newsletter) — weekly updates on React Native, Expo, and AI
 
 ## Contributing
 
