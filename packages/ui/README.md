@@ -95,10 +95,11 @@ Publishing is automated via GitHub Actions. No local `.npmrc` or Personal Access
 The repository includes a [publish workflow](../../.github/workflows/publish.yml) that:
 
 - Triggers automatically when a **GitHub Release** is created
+- Publishes as `latest` for stable releases, or `beta` for pre-releases
 - Builds the package and publishes it to GitHub Packages
 - Uses the built-in `GITHUB_TOKEN` for authentication (no PAT needed)
 
-### Publishing Steps
+### Publishing a Stable Release
 
 1. **Bump the version** in `package.json` according to [Semantic Versioning](https://semver.org/):
    - **Patch** (`0.0.1` → `0.0.2`): Bug fixes, small improvements
@@ -114,9 +115,58 @@ The repository includes a [publish workflow](../../.github/workflows/publish.yml
    - Add release notes describing the changes
    - Click "Publish release"
 
-4. The workflow will automatically build and publish the package.
+4. The workflow will automatically build and publish the package under the `latest` tag.
 
-You can also trigger the workflow manually from the **Actions** tab if needed.
+### Publishing a Beta Release
+
+Beta releases let you test new changes without affecting users on the stable version.
+
+1. **Bump the version** with a prerelease identifier, e.g. `0.0.2-beta.1`.
+
+2. **Commit the version bump** and push to your branch.
+
+3. **Create a GitHub Release:**
+   - Go to the [Releases page](https://github.com/Code-with-Beto/cwb/releases/new)
+   - Create a new tag matching the version (e.g., `v0.0.2-beta.1`)
+   - Check the **"Set as a pre-release"** checkbox
+   - Click "Publish release"
+
+4. The workflow detects the pre-release flag and publishes under the `beta` dist-tag instead of `latest`.
+
+**Installing a beta version:**
+
+```bash
+pnpm add @code-with-beto/ui@beta
+```
+
+Users who run `pnpm add @code-with-beto/ui` (without `@beta`) will continue to get the latest stable version.
+
+### Promoting Beta to Stable
+
+Once a beta has been tested and is ready for production:
+
+1. **Update the version** in `package.json` to the stable version (remove the prerelease identifier):
+   - `0.0.2-beta.3` → `0.0.2`
+
+2. **Commit the version bump** and push to `main`.
+
+3. **Create a regular GitHub Release** (do **not** check "Set as a pre-release"):
+   - Create a new tag matching the stable version (e.g., `v0.0.2`)
+   - Click "Publish release"
+
+4. The workflow publishes the package under `latest`. All users will get the stable version on their next install or update.
+
+### Example: Full Release Lifecycle
+
+Here's a typical workflow from development to stable release:
+
+| Step | Version in `package.json` | Git Tag | Pre-release? | Dist-tag |
+|------|---------------------------|---------|--------------|----------|
+| First beta | `0.0.2-beta.1` | `v0.0.2-beta.1` | Yes | `beta` |
+| Fix a bug in beta | `0.0.2-beta.2` | `v0.0.2-beta.2` | Yes | `beta` |
+| Promote to stable | `0.0.2` | `v0.0.2` | No | `latest` |
+
+You can also trigger the workflow manually from the **Actions** tab with a custom dist-tag if needed.
 
 ### Package Configuration
 
