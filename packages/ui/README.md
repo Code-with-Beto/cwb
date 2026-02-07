@@ -205,28 +205,4 @@ import { Text } from "@code-with-beto/ui";
 
 ## License
 
-**PROPRIETARY - All Rights Reserved**
-
-This package is proprietary software owned by Code with Beto LLC.
-
-**Usage Rights:**
-
-- ✅ Available to active members of the Code-with-Beto organization
-- ✅ Can be used in applications within the organization
-- ✅ Contributions from organization members are welcome
-
-**Restrictions:**
-
-- ❌ Cannot be used in projects for other organizations or employers without permission
-- ❌ Cannot be redistributed, republished, or repackaged
-- ❌ Cannot be transferred to third parties
-
-**Warranty:**
-This software is provided "AS IS" without warranty. Code with Beto LLC is a small team with limited resources and cannot guarantee functionality or provide technical support, though we're happy to assist when possible.
-
-**Violations:**
-Violation of these terms will result in immediate termination of access, removal from the organization, and loss of access to all packages and updates.
-
-For commercial use or licensing outside the organization, please contact Code with Beto LLC.
-
-See [LICENSE](../../LICENSE) for full terms and conditions.
+This package is licensed under the [MIT License](../../LICENSE).

@@ -77,20 +77,4 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines on how to contribute to 
 
 ## License
 
-**PROPRIETARY - All Rights Reserved**
-
-This repository and all packages are proprietary software owned by Code with Beto LLC.
-
-**Key Terms:**
-
-- Available exclusively to active members of the Code-with-Beto organization
-- Cannot be used in projects for other organizations or employers without permission
-- Redistribution, republishing, or repackaging is strictly prohibited
-- Violations result in immediate termination of access and removal from the organization
-
-**Warranty Disclaimer:**
-This software is provided "AS IS" without warranty. Code with Beto LLC is a small team with limited resources and cannot guarantee functionality or provide technical support, though we're happy to assist when possible.
-
-For commercial use or licensing inquiries, please contact Code with Beto LLC.
-
-See [LICENSE](./LICENSE) for full terms and conditions.
+This project is licensed under the [MIT License](./LICENSE).

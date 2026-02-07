@@ -103,14 +103,9 @@ For detailed publishing instructions, including authentication setup, see the [U
 - Export types alongside components
 - Use React Native components as the base
 
-## License and Terms
+## License
 
-By contributing to this repository, you acknowledge that:
-
-- All contributions become the property of Code with Beto LLC
-- This is proprietary software - see [LICENSE](../LICENSE) for full terms
-- Contributions are welcome from organization members only
-- Redistribution or republishing of this code is strictly prohibited
+By contributing to this repository, you agree that your contributions will be licensed under the [MIT License](./LICENSE).
 
 ## Questions?
 

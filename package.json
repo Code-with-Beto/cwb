@@ -1,5 +1,6 @@
 {
   "name": "@cwb",
+  "license": "MIT",
   "private": true,
   "workspaces": [
     "packages/*",
