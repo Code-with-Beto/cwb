@@ -71,7 +71,9 @@ This compiles TypeScript to JavaScript in the `dist/` folder, which is what gets
 
 ## Publishing
 
-For information on publishing packages, see the [UI package README](./packages/ui/README.md).
+Publishing is automated via GitHub Actions. When a [GitHub Release](https://github.com/Code-with-Beto/cwb/releases/new) is created, the workflow builds and publishes the package to GitHub Packages automatically -- no local `.npmrc` or Personal Access Token required.
+
+For detailed instructions, see the [UI package README](./packages/ui/README.md#publishing).
 
 ## Contributing
 

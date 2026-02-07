@@ -70,31 +70,20 @@ Simply import components and start coding!
 
 ## Publishing
 
-When you're ready to publish a new version of a package:
+Publishing is automated via GitHub Actions -- no local `.npmrc` or tokens required.
 
-1. **Bump the version** in `package.json` according to [Semantic Versioning](https://semver.org/):
+1. **Bump the version** in the package's `package.json` following [Semantic Versioning](https://semver.org/):
    - **Patch** (`0.0.1` → `0.0.2`): Bug fixes
    - **Minor** (`0.0.1` → `0.1.0`): New features (backward compatible)
    - **Major** (`0.0.1` → `1.0.0`): Breaking changes
 
-2. **Build the package:**
+2. **Commit and push** the version bump to `main`.
 
-   ```bash
-   pnpm --filter @code-with-beto/ui build
-   ```
+3. **Create a GitHub Release** at [github.com/Code-with-Beto/cwb/releases/new](https://github.com/Code-with-Beto/cwb/releases/new) with a tag matching the version (e.g., `v0.0.2`).
 
-3. **Test the build** (dry-run):
+The publish workflow will automatically build and publish the package to GitHub Packages.
 
-   ```bash
-   pnpm --filter @code-with-beto/ui publish --dry-run
-   ```
-
-4. **Publish:**
-   ```bash
-   pnpm --filter @code-with-beto/ui publish
-   ```
-
-For detailed publishing instructions, including authentication setup, see the [UI package README](./packages/ui/README.md#publishing).
+For more details, see the [UI package README](./packages/ui/README.md#publishing).
 
 ## Code Style
 

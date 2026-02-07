@@ -8,6 +8,16 @@ This package provides reusable UI components for React Native applications. Comp
 
 ## Installation
 
+Since this package is published to [GitHub Packages](https://github.com/orgs/Code-with-Beto/packages), you need to tell your package manager where to find the `@code-with-beto` scope. Add a `.npmrc` file to your project root:
+
+```ini
+@code-with-beto:registry=https://npm.pkg.github.com
+```
+
+No authentication token is required -- the package is public.
+
+Then install:
+
 ```bash
 pnpm add @code-with-beto/ui
 ```
@@ -78,64 +88,35 @@ pnpm --filter @code-with-beto/ui typecheck
 
 ## Publishing
 
-### Prerequisites for Organization Admins
+Publishing is automated via GitHub Actions. No local `.npmrc` or Personal Access Token is required.
 
-To publish packages, you need:
+### How It Works
 
-1. **GitHub Personal Access Token (PAT)** with `write:packages` and `read:packages` scopes
-   - Create one at: https://github.com/settings/tokens
-   - Select "Generate new token (classic)"
-   - Name it something like "GitHub Packages - Code-with-Beto"
-   - Check `write:packages` and `read:packages` scopes
-   - Generate and copy the token immediately
+The repository includes a [publish workflow](../../.github/workflows/publish.yml) that:
 
-2. **Configure `.npmrc`** in this package directory:
-
-   ```ini
-   @code-with-beto:registry=https://npm.pkg.github.com
-   //npm.pkg.github.com/:_authToken=YOUR_PAT_HERE
-   ```
-
-   Replace `YOUR_PAT_HERE` with your Personal Access Token.
-
-   ⚠️ **Important:** The `.npmrc` file is already in `.gitignore` to prevent committing your token. Never commit this file!
-
-### Version Bumping
-
-Before publishing, update the version in `package.json` according to [Semantic Versioning](https://semver.org/):
-
-- **Patch** (`0.0.1` → `0.0.2`): Bug fixes, small improvements
-- **Minor** (`0.0.1` → `0.1.0`): New features (backward compatible)
-- **Major** (`0.0.1` → `1.0.0`): Breaking changes
-
-Example:
-
-```json
-{
-  "version": "0.0.2" // Updated version
-}
-```
+- Triggers automatically when a **GitHub Release** is created
+- Builds the package and publishes it to GitHub Packages
+- Uses the built-in `GITHUB_TOKEN` for authentication (no PAT needed)
 
 ### Publishing Steps
 
-1. **Build the package:**
+1. **Bump the version** in `package.json` according to [Semantic Versioning](https://semver.org/):
+   - **Patch** (`0.0.1` → `0.0.2`): Bug fixes, small improvements
+   - **Minor** (`0.0.1` → `0.1.0`): New features (backward compatible)
+   - **Major** (`0.0.1` → `1.0.0`): Breaking changes
 
-   ```bash
-   pnpm --filter @code-with-beto/ui build
-   ```
+2. **Commit the version bump** and push to `main`.
 
-2. **Test before publishing** (dry-run):
+3. **Create a GitHub Release:**
+   - Go to the [Releases page](https://github.com/Code-with-Beto/cwb/releases/new)
+   - Click "Draft a new release"
+   - Create a new tag matching the version (e.g., `v0.0.2`)
+   - Add release notes describing the changes
+   - Click "Publish release"
 
-   ```bash
-   pnpm --filter @code-with-beto/ui publish --dry-run
-   ```
+4. The workflow will automatically build and publish the package.
 
-   This will show you what will be published without actually publishing.
-
-3. **Publish:**
-   ```bash
-   pnpm --filter @code-with-beto/ui publish
-   ```
+You can also trigger the workflow manually from the **Actions** tab if needed.
 
 ### Package Configuration
 
@@ -143,21 +124,8 @@ The package is configured to publish to GitHub Packages:
 
 - **Registry:** `https://npm.pkg.github.com`
 - **Scope:** `@code-with-beto`
+- **Access:** Public
 - **Files included:** Only the `dist/` folder (specified in `package.json`)
-
-### Troubleshooting
-
-**Error: "Permission not_found: owner not found"**
-
-- Ensure your `.npmrc` has the correct scope: `@code-with-beto:registry=...`
-- Verify your PAT has the correct scopes (`write:packages`, `read:packages`)
-- Make sure you're authenticated with your personal GitHub account (betomoedano), even though you're publishing to the Code-with-Beto organization
-
-**Error: "403 Forbidden"**
-
-- Check that your PAT token is correct in `.npmrc`
-- Verify the token hasn't expired
-- Ensure you have admin permissions in the Code-with-Beto organization
 
 ## Components
 

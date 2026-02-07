@@ -15,7 +15,8 @@
     "watch": "tsc -p tsconfig.json --watch"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
   },
   "peerDependencies": {
     "react": "*",
