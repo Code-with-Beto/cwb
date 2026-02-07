@@ -1,6 +1,6 @@
 # Code with Beto Labs 🧪🔬
 
-This repository contains packages and libraries that we built with ❤️ for [Code with Beto](https://cwb.sh) members and React Native community.
+This monorepo contains packages and libraries that we've built with ❤️ for [Code with Beto](https://cwb.sh) members and React Native community.
 
 [Master React Native with us!](https://cwb.sh)
 
