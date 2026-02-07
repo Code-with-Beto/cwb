@@ -1,6 +1,6 @@
-# CWB Monorepo
+# Code with Beto Labs 🧪🔬
 
-A pnpm workspace containing shared packages and example applications.
+This repository contains packages and libraries that we built with love for the React Native community and [codewithbeto.dev](https://cwb.sh) members.
 
 ## Structure
 
