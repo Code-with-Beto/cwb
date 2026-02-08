@@ -18,15 +18,19 @@ Or with npm:
 npm install @codewithbeto/ui
 ```
 
-## Usage
+## Quick Start
 
 ```typescript
 import { Text } from "@codewithbeto/ui";
 
 export default function App() {
-  return <Text variant="heading">Hello World</Text>;
+  return <Text type="title">Hello World</Text>;
 }
 ```
+
+## Components
+
+- **[Text](./src/components/Text/README.md)** - Versatile text component with automatic dark mode support, multiple size variants, and extensive styling options
 
 ## Development
 
@@ -167,31 +171,23 @@ The package is configured to publish to npm:
 - **Access:** Public
 - **Files included:** Only the `dist/` folder (specified in `package.json`)
 
-## Components
-
-### Text
-
-A text component with variant support.
-
-```typescript
-import { Text } from "@codewithbeto/ui";
-
-<Text variant="heading">Heading Text</Text>
-<Text variant="body">Body Text</Text>
-<Text variant="caption">Caption Text</Text>
-```
-
-**Props:**
-
-- `variant?: "body" | "heading" | "caption"` - Text style variant
-- All standard React Native `Text` props are supported
-
 ## Adding New Components
 
-1. Create your component file in `src/`:
+Follow this structure when adding new components:
+
+1. Create a new folder in `src/components/`:
+
+   ```
+   src/components/MyComponent/
+   ├── MyComponent.tsx    # Component implementation
+   ├── README.md          # Component documentation
+   └── index.ts           # Exports
+   ```
+
+2. Create the component with TypeScript:
 
    ```typescript
-   // src/MyComponent.tsx
+   // src/components/MyComponent/MyComponent.tsx
    import { View } from "react-native";
 
    export interface MyComponentProps {
@@ -203,13 +199,28 @@ import { Text } from "@codewithbeto/ui";
    }
    ```
 
-2. Export it from `src/index.ts`:
+3. Create the component index file:
 
    ```typescript
+   // src/components/MyComponent/index.ts
    export { MyComponent, type MyComponentProps } from "./MyComponent";
    ```
 
-3. Test it in `apps/example` before publishing.
+4. Export from the main `src/index.ts`:
+
+   ```typescript
+   export { MyComponent, type MyComponentProps } from "./components/MyComponent";
+   ```
+
+5. Add comprehensive documentation to the component's `README.md` including:
+   - Component description and features
+   - Props table with types and descriptions
+   - Usage examples
+   - TypeScript examples
+
+6. Update the [Components](#components) section above with a link to your new component's README.
+
+7. Test in `apps/example` before publishing.
 
 ## License
 
