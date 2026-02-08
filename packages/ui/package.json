@@ -1,5 +1,5 @@
 {
-  "name": "@code-with-beto/ui",
+  "name": "@codewithbeto/ui",
   "version": "0.0.2-beta.1",
   "private": false,
   "license": "MIT",
@@ -15,7 +15,6 @@
     "watch": "tsc -p tsconfig.json --watch"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
   "peerDependencies": {

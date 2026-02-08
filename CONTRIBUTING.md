@@ -53,7 +53,7 @@ Thank you for your interest in contributing to CWB! This guide will help you get
 3. Import and test it in `apps/example/app/index.tsx`:
 
    ```typescript
-   import { MyComponent } from "@code-with-beto/ui";
+   import { MyComponent } from "@codewithbeto/ui";
    ```
 
 4. Save and see your changes live in Expo!
@@ -81,7 +81,7 @@ Publishing is automated via GitHub Actions -- no local `.npmrc` or tokens requir
 
 3. **Create a GitHub Release** at [github.com/Code-with-Beto/cwb/releases/new](https://github.com/Code-with-Beto/cwb/releases/new) with a tag matching the version (e.g., `v0.0.2`).
 
-The publish workflow will automatically build and publish the package to GitHub Packages.
+The publish workflow will automatically build and publish the package to npm.
 
 For more details, see the [UI package README](./packages/ui/README.md#publishing).
 

@@ -13,19 +13,16 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
-          registry-url: "https://npm.pkg.github.com"
+          registry-url: "https://registry.npmjs.org"
           cache: "pnpm"
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter @code-with-beto/ui build
+      - run: pnpm --filter @codewithbeto/ui build
       - name: Determine dist-tag
         id: dist-tag
         run: |
@@ -36,6 +33,6 @@ jobs:
           else
             echo "tag=latest" >> "$GITHUB_OUTPUT"
           fi
-      - run: pnpm --filter @code-with-beto/ui publish --no-git-checks --tag ${{ steps.dist-tag.outputs.tag }}
+      - run: pnpm --filter @codewithbeto/ui publish --no-git-checks --tag ${{ steps.dist-tag.outputs.tag }}
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

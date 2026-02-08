@@ -1,4 +1,4 @@
-import { Text } from "@code-with-beto/ui";
+import { Text } from "@codewithbeto/ui";
 import { Link } from "expo-router";
 import { Pressable, View } from "react-native";
 

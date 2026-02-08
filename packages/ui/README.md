@@ -1,4 +1,4 @@
-# @code-with-beto/ui
+# @codewithbeto/ui
 
 A React Native UI component library built for Expo applications.
 
@@ -8,30 +8,20 @@ This package provides reusable UI components for React Native applications. Comp
 
 ## Installation
 
-Since this package is published to [GitHub Packages](https://github.com/orgs/Code-with-Beto/packages), you need to tell your package manager where to find the `@code-with-beto` scope. Add a `.npmrc` file to your project root:
-
-```ini
-@code-with-beto:registry=https://npm.pkg.github.com
-```
-
-No authentication token is required -- the package is public.
-
-Then install:
-
 ```bash
-pnpm add @code-with-beto/ui
+pnpm add @codewithbeto/ui
 ```
 
 Or with npm:
 
 ```bash
-npm install @code-with-beto/ui
+npm install @codewithbeto/ui
 ```
 
 ## Usage
 
 ```typescript
-import { Text } from "@code-with-beto/ui";
+import { Text } from "@codewithbeto/ui";
 
 export default function App() {
   return <Text variant="heading">Hello World</Text>;
@@ -53,7 +43,7 @@ This package is part of a pnpm workspace. For local development:
 2. Use the workspace link in `apps/example` to test your changes:
 
    ```typescript
-   import { Text } from "@code-with-beto/ui";
+   import { Text } from "@codewithbeto/ui";
    ```
 
 3. Changes will hot-reload automatically in Expo.
@@ -63,7 +53,7 @@ This package is part of a pnpm workspace. For local development:
 Before publishing, you must build the package to compile TypeScript to JavaScript:
 
 ```bash
-pnpm --filter @code-with-beto/ui build
+pnpm --filter @codewithbeto/ui build
 ```
 
 This command:
@@ -72,7 +62,7 @@ This command:
 - Generates TypeScript declaration files (`.d.ts`) for type support
 - Creates source maps for debugging
 
-**Why build?** We publish compiled JavaScript to GitHub Packages, not TypeScript source files. This ensures:
+**Why build?** We publish compiled JavaScript to npm, not TypeScript source files. This ensures:
 
 - Faster installs (no compilation needed)
 - Smaller package size
@@ -83,7 +73,7 @@ This command:
 Run type checking without building:
 
 ```bash
-pnpm --filter @code-with-beto/ui typecheck
+pnpm --filter @codewithbeto/ui typecheck
 ```
 
 ## Publishing
@@ -96,8 +86,8 @@ The repository includes a [publish workflow](../../.github/workflows/publish.yml
 
 - Triggers automatically when a **GitHub Release** is created
 - Publishes as `latest` for stable releases, or `beta` for pre-releases
-- Builds the package and publishes it to GitHub Packages
-- Uses the built-in `GITHUB_TOKEN` for authentication (no PAT needed)
+- Builds the package and publishes it to npm
+- Uses an `NPM_TOKEN` repository secret for authentication
 
 ### Publishing a Stable Release
 
@@ -136,10 +126,10 @@ Beta releases let you test new changes without affecting users on the stable ver
 **Installing a beta version:**
 
 ```bash
-pnpm add @code-with-beto/ui@beta
+pnpm add @codewithbeto/ui@beta
 ```
 
-Users who run `pnpm add @code-with-beto/ui` (without `@beta`) will continue to get the latest stable version.
+Users who run `pnpm add @codewithbeto/ui` (without `@beta`) will continue to get the latest stable version.
 
 ### Promoting Beta to Stable
 
@@ -170,10 +160,10 @@ You can also trigger the workflow manually from the **Actions** tab with a custo
 
 ### Package Configuration
 
-The package is configured to publish to GitHub Packages:
+The package is configured to publish to npm:
 
-- **Registry:** `https://npm.pkg.github.com`
-- **Scope:** `@code-with-beto`
+- **Registry:** `https://registry.npmjs.org`
+- **Scope:** `@codewithbeto`
 - **Access:** Public
 - **Files included:** Only the `dist/` folder (specified in `package.json`)
 
@@ -184,7 +174,7 @@ The package is configured to publish to GitHub Packages:
 A text component with variant support.
 
 ```typescript
-import { Text } from "@code-with-beto/ui";
+import { Text } from "@codewithbeto/ui";
 
 <Text variant="heading">Heading Text</Text>
 <Text variant="body">Body Text</Text>

@@ -11,7 +11,7 @@
     "lint": "expo lint"
   },
   "dependencies": {
-    "@code-with-beto/ui": "workspace:*",
+    "@codewithbeto/ui": "workspace:*",
     "@react-navigation/native": "^7.0.0-rc.21",
     "expo": "^55.0.0-preview.9",
     "expo-constants": "~55.0.3",

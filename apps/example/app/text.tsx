@@ -1,5 +1,5 @@
 import { Platform, ScrollView, useColorScheme, View } from "react-native";
-import { Text } from "@code-with-beto/ui";
+import { Text } from "@codewithbeto/ui";
 import { Stack } from "expo-router";
 import { isLiquidGlassAvailable } from "expo-glass-effect";
 
