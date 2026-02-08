@@ -17,9 +17,9 @@ This repo is maintained by a small team at Code with Beto. These packages come f
 
 ## Packages
 
-| Package | Description | npm |
-|---------|-------------|-----|
-| [`@codewithbeto/ui`](./packages/ui) | React Native UI component library | [![npm](https://img.shields.io/npm/v/@codewithbeto/ui)](https://www.npmjs.com/package/@codewithbeto/ui) |
+| Package                             | Description                       |
+| ----------------------------------- | --------------------------------- |
+| [`@codewithbeto/ui`](./packages/ui) | React Native UI component library |
 
 ## Structure
 
