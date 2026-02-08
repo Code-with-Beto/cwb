@@ -76,27 +76,9 @@ Since everything works in Expo, you can:
 
 For more details on contributing, see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
-## Building Packages
-
-To build a package (required before publishing):
-
-```bash
-pnpm --filter @codewithbeto/ui build
-```
-
-This compiles TypeScript to JavaScript in the `dist/` folder, which is what gets published to npm.
-
-## Publishing
-
-Publishing is automated via GitHub Actions. When a [GitHub Release](https://github.com/Code-with-Beto/cwb/releases/new) is created, the workflow builds and publishes the package to npm automatically.
-
-For detailed instructions, see the [UI package README](./packages/ui/README.md#publishing).
-
 ## Contributing
 
-We welcome contributions! Bug fixes, documentation improvements, and new components are all appreciated.
-
-Before you contribute, please read our [Contributing Guide](./CONTRIBUTING.md) to understand the process and what types of contributions we're looking for.
+We welcome contributions! Please read our [Contributing Guide](./CONTRIBUTING.md) for details.
 
 ## Support
 
