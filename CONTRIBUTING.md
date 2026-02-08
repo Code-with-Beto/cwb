@@ -1,6 +1,36 @@
 # Contributing Guide
 
-Thank you for your interest in contributing to CWB! This guide will help you get started.
+Thank you for your interest in contributing to CWB! We appreciate the help.
+
+This project is maintained by a small team at [Code with Beto](https://cwb.sh). We built these packages for our own apps and our members, and we're happy to share them with the community. Contributions that improve quality, fix bugs, or add useful features are always welcome.
+
+## Before You Contribute
+
+### What we're looking for
+
+- **Bug fixes** - Found something broken? We'd love a fix (with a reproduction if possible)
+- **Documentation improvements** - Typos, unclear explanations, better examples
+- **New components** - Especially ones that align with common React Native patterns
+- **Performance improvements** - Faster, leaner, better
+
+### What we'll likely decline
+
+- Large architectural changes without prior discussion
+- Features that are highly specific to one app or use case
+- Changes that add significant maintenance burden for a niche benefit
+
+**Tip:** For anything beyond a small fix, [open an issue](https://github.com/Code-with-Beto/cwb/issues) first to discuss the approach. This saves everyone time.
+
+## Reporting Issues
+
+When opening an issue, please include:
+
+1. **What you expected** vs. **what happened**
+2. **Steps to reproduce** the issue
+3. **Environment details** - Expo SDK version, React Native version, platform (iOS/Android/Web)
+4. **A minimal reproduction** if possible (an Expo Snack or small repo is ideal)
+
+The more details you provide, the faster we can help. Issues without enough information to reproduce may be closed.
 
 ## Quick Start
 
@@ -62,11 +92,20 @@ Thank you for your interest in contributing to CWB! This guide will help you get
 
 The example app (`apps/example`) is configured to use the UI package directly via workspace linking. This means:
 
-- ✅ No need to rebuild after every change
-- ✅ Hot reload works automatically
-- ✅ Fast iteration cycle
+- No need to rebuild after every change
+- Hot reload works automatically
+- Fast iteration cycle
 
 Simply import components and start coding!
+
+## Pull Request Guidelines
+
+- Keep PRs focused on a single change
+- Include a clear description of what and why
+- Make sure the example app still works with your changes
+- Follow the existing code style (see below)
+
+We review PRs as time allows. If you haven't heard back in a week, feel free to leave a friendly ping on the PR.
 
 ## Publishing
 
@@ -98,4 +137,6 @@ By contributing to this repository, you agree that your contributions will be li
 
 ## Questions?
 
-If you have questions or need help, please open an issue or reach out to the maintainers.
+- Check [existing issues](https://github.com/Code-with-Beto/cwb/issues) first -- someone may have asked the same thing
+- If not, [open a new issue](https://github.com/Code-with-Beto/cwb/issues/new) and we'll get to it when we can
+- For direct support and community access, check out our [Pro membership](https://cwb.sh)
