@@ -22,8 +22,14 @@ Publishing is automated via GitHub Actions. When a [GitHub Release](https://gith
 
 1. **Update Version**: Update the package version in the package's `package.json`
 2. **Commit Changes**: Commit the version bump to the main branch
-3. **Create GitHub Release**: Create a new release on GitHub with a tag matching the version (e.g., `v1.2.3`)
-4. **Automated Publishing**: The GitHub Actions workflow will automatically:
+3. **Create and Push a Tag**:
+   ```bash
+   git tag v55.0.0
+   git push origin v55.0.0
+   ```
+   Or push all local tags at once with `git push origin --tags`.
+4. **Create GitHub Release**: Go to the [Releases page](https://github.com/Code-with-Beto/cwb/releases/new) and select the tag you just pushed
+5. **Automated Publishing**: The GitHub Actions workflow will automatically:
    - Build the package
    - Publish to npm
    - Use the npm token from repository secrets
