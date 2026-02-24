@@ -21,6 +21,12 @@ This repo is maintained by a small team at Code with Beto. These packages come f
 | ----------------------------------- | --------------------------------- |
 | [`@codewithbeto/ui`](./packages/ui) | React Native UI component library |
 
+## Versioning
+
+All packages in this repo follow the **Expo SDK versioning scheme**. The major version of each package matches the Expo SDK version it's built and tested against. For example, `@codewithbeto/ui@55.x.x` is designed for Expo SDK 55.
+
+This makes it easy to tell at a glance whether a package version is compatible with your SDK. We do not intend for packages to be compatible across different SDK versions -- when you upgrade your Expo SDK, upgrade these packages to match.
+
 ## Structure
 
 This repository uses [pnpm workspaces](https://pnpm.io/workspaces) to manage multiple packages and apps:

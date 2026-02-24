@@ -1,14 +1,13 @@
 # Text Component
 
-A versatile text component with automatic color scheme support, multiple size variants, and extensive styling options.
+A lightweight text component with multiple size variants and full React Native Text compatibility.
 
 ## Features
 
-- 🌗 **Automatic dark mode support** - Adapts to system color scheme
-- 📏 **Multiple size variants** - From xs to 12xl, plus semantic types
-- 🎨 **Flexible styling** - Support for weight, font style, and color overrides
-- 🔤 **Secondary text variant** - Built-in support for description/caption text
-- ✅ **Full React Native Text compatibility** - All standard props supported
+- **Multiple size variants** - From xs to 12xl, plus semantic types
+- **Flexible styling** - Support for weight and font style
+- **Full React Native Text compatibility** - All standard props supported
+- **No internal color opinion** - You own your colors via `style`
 
 ## Installation
 
@@ -32,10 +31,8 @@ export default function App() {
 |------|------|---------|-------------|
 | `children` | `ReactNode` | - | Text content to display |
 | `type` | `TextType` | `"default"` | Text size variant (see below) |
-| `secondary` | `boolean` | `false` | Use secondary gray color for descriptions |
 | `weight` | `FontWeight` | `"normal"` | Font weight (100-900 or "normal"/"bold") |
 | `fontStyle` | `"normal" \| "italic"` | `"normal"` | Font style |
-| `color` | `string` | - | Override the default color |
 | ...rest | `TextProps` | - | All standard React Native Text props |
 
 ### Text Types
@@ -79,7 +76,6 @@ The `weight` prop accepts:
 ### Size Variants
 
 ```typescript
-// Using numeric size scale
 <Text type="xs">Extra small text</Text>
 <Text type="sm">Small text</Text>
 <Text type="default">Default text</Text>
@@ -87,77 +83,54 @@ The `weight` prop accepts:
 <Text type="2xl">2XL heading</Text>
 <Text type="5xl">5XL heading</Text>
 
-// Using semantic types
 <Text type="title">Page Title</Text>
 <Text type="subtitle">Section Subtitle</Text>
 <Text type="body">Body text content</Text>
 <Text type="caption">Small caption text</Text>
 ```
 
-### Secondary Text
-
-Use the `secondary` prop for descriptions, labels, or less prominent text. This follows Apple's Human Interface Guidelines for secondary label colors.
-
-```typescript
-<Text>Primary Text</Text>
-<Text secondary>Secondary description text</Text>
-
-<Text type="title">Settings</Text>
-<Text type="caption" secondary>
-  Manage your account preferences
-</Text>
-```
-
-**Colors:**
-- Light mode: `#6E6E73` (60% opacity gray)
-- Dark mode: `#8E8E93` (60% opacity gray)
-
 ### Font Weight and Style
 
 ```typescript
-// Using weight prop
 <Text weight="bold">Bold text</Text>
 <Text weight="300">Light text</Text>
 <Text weight={600}>Semi-bold text</Text>
 
-// Using fontStyle prop
 <Text fontStyle="italic">Italic text</Text>
 <Text weight="bold" fontStyle="italic">Bold italic text</Text>
 ```
 
-### Custom Colors
+### Colors via Style
 
-Override the automatic color scheme with a custom color:
+The component does not manage colors internally. Pass colors through the `style` prop, which gives you full control over theming:
 
 ```typescript
-<Text color="#FF0000">Red text</Text>
-<Text color="#0066CC" weight="bold">Bold blue text</Text>
-<Text type="title" color="rgba(255, 0, 0, 0.8)">
-  Red title with transparency
-</Text>
+<Text style={{ color: "#FF0000" }}>Red text</Text>
+<Text weight="bold" style={{ color: "#0066CC" }}>Bold blue text</Text>
+
+// With a system color hook for dark/light mode support
+const systemColors = useSystemColors();
+<Text style={{ color: systemColors.text }}>Themed text</Text>
+<Text style={{ color: systemColors.secondaryLabel }}>Secondary text</Text>
 ```
 
 ### Combining Props
 
-All props can be combined for maximum flexibility:
-
 ```typescript
-<Text 
-  type="2xl" 
-  weight="bold" 
-  color="#1a1a1a"
-  style={{ marginBottom: 8 }}
+<Text
+  type="2xl"
+  weight="bold"
+  style={{ color: "#1a1a1a", marginBottom: 8 }}
 >
   Custom Heading
 </Text>
 
-<Text 
-  type="body" 
-  secondary 
+<Text
+  type="body"
   weight="400"
-  style={{ marginTop: 4 }}
+  style={{ color: "#6E6E73", marginTop: 4 }}
 >
-  Description text with custom styling
+  Description text
 </Text>
 ```
 
@@ -166,7 +139,7 @@ All props can be combined for maximum flexibility:
 All standard React Native `Text` props are supported:
 
 ```typescript
-<Text 
+<Text
   numberOfLines={2}
   ellipsizeMode="tail"
   onPress={() => console.log('Pressed')}
@@ -184,15 +157,6 @@ All standard React Native `Text` props are supported:
 </Text>
 ```
 
-## Dark Mode
-
-The component automatically adapts to the system color scheme:
-
-- **Light mode:** Black text (`#000000`) or secondary gray (`#6E6E73`)
-- **Dark mode:** White text (`#FFFFFF`) or secondary gray (`#8E8E93`)
-
-Use the `color` prop to override this behavior when needed.
-
 ## TypeScript
 
 Full TypeScript support with exported types:
@@ -200,7 +164,6 @@ Full TypeScript support with exported types:
 ```typescript
 import { Text, type TextProps } from "@codewithbeto/ui";
 
-// Custom wrapper component
 function Heading({ children, ...props }: TextProps) {
   return (
     <Text type="title" weight="bold" {...props}>
@@ -217,12 +180,6 @@ function Heading({ children, ...props }: TextProps) {
 - Use **semantic types** (`title`, `subtitle`, `body`, `caption`) for consistent UI patterns
 - Use **numeric scale** (`xs`, `sm`, `lg`, etc.) for more granular control
 - Stick to one system (semantic or numeric) within a component for consistency
-
-### Color Usage
-
-- Prefer the automatic color scheme for most text
-- Use `secondary` for descriptions, labels, and less important information
-- Reserve the `color` prop for accent colors, links, or branded elements
 
 ### Weight Selection
 
@@ -246,9 +203,8 @@ The component maintains all React Native Text accessibility features:
 
 ## Performance
 
-The component uses React hooks (`useMemo`) to optimize:
-- Color calculations based on color scheme
-- Style lookups for size variants
-- Dynamic style generation from props
+The component is a thin wrapper around React Native's `Text` with no internal state or hooks. It applies size styles from a static `StyleSheet` and passes everything else through. This means:
 
-These optimizations ensure minimal re-renders and smooth performance.
+- No unnecessary re-renders from internal subscriptions
+- Color scheme changes only re-render when your parent component re-renders
+- Style objects are pre-created via `StyleSheet.create` for optimal performance

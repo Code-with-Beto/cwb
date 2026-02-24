@@ -30,7 +30,7 @@ export default function App() {
 
 ## Components
 
-- **[Text](./src/components/Text/README.md)** - Versatile text component with automatic dark mode support, multiple size variants, and extensive styling options
+- **[Text](./src/components/Text/README.md)** - Lightweight text component with multiple size variants and full React Native Text compatibility
 
 ## Development
 
@@ -93,19 +93,25 @@ The repository includes a [publish workflow](../../.github/workflows/publish.yml
 - Builds the package and publishes it to npm
 - Uses an `NPM_TOKEN` repository secret for authentication
 
+### Versioning
+
+This package follows the **Expo SDK versioning scheme**. The major version matches the Expo SDK version it's built and tested against. For example, `@codewithbeto/ui@55.x.x` is designed for Expo SDK 55. This makes it easy to identify at a glance that your packages are compatible with your SDK version.
+
+Within a major version, we use patch bumps for bug fixes and minor bumps for new features:
+
+- **Patch** (`55.0.0` → `55.0.1`): Bug fixes, small improvements
+- **Minor** (`55.0.0` → `55.1.0`): New features (backward compatible)
+
 ### Publishing a Stable Release
 
-1. **Bump the version** in `package.json` according to [Semantic Versioning](https://semver.org/):
-   - **Patch** (`0.0.1` → `0.0.2`): Bug fixes, small improvements
-   - **Minor** (`0.0.1` → `0.1.0`): New features (backward compatible)
-   - **Major** (`0.0.1` → `1.0.0`): Breaking changes
+1. **Bump the version** in `package.json`.
 
 2. **Commit the version bump** and push to `main`.
 
 3. **Create a GitHub Release:**
    - Go to the [Releases page](https://github.com/Code-with-Beto/cwb/releases/new)
    - Click "Draft a new release"
-   - Create a new tag matching the version (e.g., `v0.0.2`)
+   - Create a new tag matching the version (e.g., `v55.0.0`)
    - Add release notes describing the changes
    - Click "Publish release"
 
@@ -115,13 +121,13 @@ The repository includes a [publish workflow](../../.github/workflows/publish.yml
 
 Beta releases let you test new changes without affecting users on the stable version.
 
-1. **Bump the version** with a prerelease identifier, e.g. `0.0.2-beta.1`.
+1. **Bump the version** with a prerelease identifier, e.g. `55.0.0-beta.1`.
 
 2. **Commit the version bump** and push to your branch.
 
 3. **Create a GitHub Release:**
    - Go to the [Releases page](https://github.com/Code-with-Beto/cwb/releases/new)
-   - Create a new tag matching the version (e.g., `v0.0.2-beta.1`)
+   - Create a new tag matching the version (e.g., `v55.0.0-beta.1`)
    - Check the **"Set as a pre-release"** checkbox
    - Click "Publish release"
 
@@ -140,12 +146,12 @@ Users who run `pnpm add @codewithbeto/ui` (without `@beta`) will continue to get
 Once a beta has been tested and is ready for production:
 
 1. **Update the version** in `package.json` to the stable version (remove the prerelease identifier):
-   - `0.0.2-beta.3` → `0.0.2`
+   - `55.0.0-beta.3` → `55.0.0`
 
 2. **Commit the version bump** and push to `main`.
 
 3. **Create a regular GitHub Release** (do **not** check "Set as a pre-release"):
-   - Create a new tag matching the stable version (e.g., `v0.0.2`)
+   - Create a new tag matching the stable version (e.g., `v55.0.0`)
    - Click "Publish release"
 
 4. The workflow publishes the package under `latest`. All users will get the stable version on their next install or update.
@@ -156,9 +162,9 @@ Here's a typical workflow from development to stable release:
 
 | Step | Version in `package.json` | Git Tag | Pre-release? | Dist-tag |
 |------|---------------------------|---------|--------------|----------|
-| First beta | `0.0.2-beta.1` | `v0.0.2-beta.1` | Yes | `beta` |
-| Fix a bug in beta | `0.0.2-beta.2` | `v0.0.2-beta.2` | Yes | `beta` |
-| Promote to stable | `0.0.2` | `v0.0.2` | No | `latest` |
+| First beta | `55.0.0-beta.1` | `v55.0.0-beta.1` | Yes | `beta` |
+| Fix a bug in beta | `55.0.0-beta.2` | `v55.0.0-beta.2` | Yes | `beta` |
+| Promote to stable | `55.0.0` | `v55.0.0` | No | `latest` |
 
 You can also trigger the workflow manually from the **Actions** tab with a custom dist-tag if needed.
 
