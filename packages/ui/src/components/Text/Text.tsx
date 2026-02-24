@@ -1,48 +1,34 @@
-import { useMemo } from "react";
 import {
   Text as RNText,
   StyleSheet,
-  useColorScheme,
   type TextProps as RNTextProps,
 } from "react-native";
 import { type ReactNode } from "react";
 
 /**
- * Text component with automatic color scheme support and multiple size variants.
+ * Text component with multiple size variants.
  *
  * @example
  * ```tsx
- * // Basic usage with default size
  * <Text>Hello World</Text>
  *
- * // Using different size types
  * <Text type="title">Page Title</Text>
  * <Text type="body">Body text content</Text>
  * <Text type="caption">Small caption text</Text>
  *
- * // Using numeric sizes
  * <Text type="xs">Extra small text</Text>
  * <Text type="lg">Large text</Text>
  * <Text type="3xl">Very large heading</Text>
  *
- * // Using secondary prop for description text
- * <Text secondary>This is a description with gray color</Text>
- * <Text type="caption" secondary>Secondary caption text</Text>
- *
- * // Using weight, fontStyle, and color props
  * <Text weight="bold">Bold text</Text>
  * <Text weight={600} fontStyle="italic">Semi-bold italic text</Text>
- * <Text color="#FF0000">Red text</Text>
- * <Text weight="bold" color="#0066CC">Bold blue text</Text>
  *
- * // All standard React Native Text props are supported
  * <Text type="heading" style={{ marginTop: 10 }}>
  *   Custom styled text
  * </Text>
  * ```
  */
 export type TextProps = RNTextProps & {
-  /** Text content to display */
   children?: ReactNode;
   /**
    * Text size variant
@@ -72,12 +58,6 @@ export type TextProps = RNTextProps & {
     | "body"
     | "caption";
   /**
-   * When enabled, uses a secondary gray color suitable for descriptions and less prominent text.
-   * Follows Apple's Human Interface Guidelines for secondary label colors.
-   * @default false
-   */
-  secondary?: boolean;
-  /**
    * Font weight of the text.
    * Can be a string ("normal", "bold") or a number (100-900).
    * @default "normal"
@@ -100,61 +80,18 @@ export type TextProps = RNTextProps & {
    * @default "normal"
    */
   fontStyle?: "normal" | "italic";
-  /**
-   * Override the default color. When provided, this takes precedence over the automatic
-   * color scheme and secondary prop.
-   */
-  color?: string;
 };
 
-/**
- * Text component that automatically adapts to light/dark color scheme.
- * Text color will be black in light mode and white in dark mode.
- * Use the `secondary` prop for description text with a gray color.
- */
 export function Text({
   style,
   type = "default",
-  secondary = false,
   weight,
   fontStyle,
-  color: colorOverride,
   ...rest
 }: TextProps) {
-  const colorScheme = useColorScheme();
-  // Default to light mode if colorScheme is null/undefined
-  const color = useMemo(() => {
-    // If color override is provided, use it
-    if (colorOverride) {
-      return colorOverride;
-    }
-    if (secondary) {
-      // Apple's secondary label colors following HIG guidelines
-      // Light mode: #6E6E73 (60% opacity equivalent)
-      // Dark mode: #8E8E93 (60% opacity equivalent)
-      return colorScheme === "dark" ? "#8E8E93" : "#6E6E73";
-    }
-    return colorScheme === "dark" ? "#ffffff" : "#000000";
-  }, [colorScheme, secondary, colorOverride]);
-
-  // Memoize size style lookup
-  const sizeStyle = useMemo(() => sizeStyles[type], [type]);
-
-  // Build dynamic styles from props
-  const dynamicStyles = useMemo(() => {
-    const styles: any = {};
-    if (weight !== undefined) {
-      styles.fontWeight = weight;
-    }
-    if (fontStyle !== undefined) {
-      styles.fontStyle = fontStyle;
-    }
-    return styles;
-  }, [weight, fontStyle]);
-
   return (
     <RNText
-      style={[{ color }, sizeStyle, dynamicStyles, style] as any}
+      style={[sizeStyles[type], weight !== undefined && { fontWeight: weight }, fontStyle !== undefined && { fontStyle }, style] as any}
       textBreakStrategy="simple"
       {...rest}
     />

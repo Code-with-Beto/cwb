@@ -26,6 +26,7 @@ const textVariants = [
 export default function TextScreen() {
   const colorScheme = useColorScheme();
   const headerBlurEffect = colorScheme === "dark" ? "dark" : "light";
+  const secondaryColor = colorScheme === "dark" ? "#8E8E93" : "#6E6E73";
   return (
     <>
       <Stack.Screen
@@ -45,12 +46,15 @@ export default function TextScreen() {
           padding: 16,
         }}
       >
-        <Text type="subtitle" weight="bold" color="#0066CC">
+        <Text type="subtitle" weight="bold" style={{ color: "#0066CC" }}>
           Bold subtitle blue text
         </Text>
         {textVariants.map((variant) => (
           <View key={variant} style={{ marginBottom: 16 }}>
-            <Text type="caption" style={{ marginBottom: 4 }} secondary>
+            <Text
+              type="caption"
+              style={{ marginBottom: 4, color: secondaryColor }}
+            >
               {`type="${variant}"`}
             </Text>
             <Text type={variant}>
